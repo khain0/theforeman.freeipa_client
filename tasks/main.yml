@@ -1,10 +1,22 @@
 ---
 - name: Install required packages
   ansible.builtin.package:
-    name: ipa-client
+    name: 
+      - ipa-client
+      - python3-pip
     state: installed
+- name: Install pexpect
+  ansible.builtin.pip:
+    name: pexpect
+    state: present
 - name: Add host to IPA server
   ansible.builtin.expect:
     command: ipa-client-install --mkhomedir --no-ntp --no-nisdomain --hostname {{ inventory_hostname }} --realm {{ ansible_domain |upper }} --principal {{ ipaadmin_principal }} --password {{ ipaadmin_password }}
     responses: 
-      "Continue to configure the system with these values? [no]:": yes
+      'Continue to configure the system with these values': 'yes'
+  register: result
+  changed_when:
+    - result.rc == 0
+  failed_when:
+    - result.rc != 0
+    - result.rc != 3
