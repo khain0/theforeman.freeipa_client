@@ -1,2 +1,10 @@
 ---
-# tasks file for theforeman.freeipa_client
+- name: Install required packages
+  ansible.builtin.package:
+    name: ipa-client
+    state: installed
+- name: Add host to IPA server
+  ansible.builtin.expect:
+    command: ipa-client-install --mkhomedir --no-ntp --no-nisdomain --hostname {{ inventory_hostname }} --realm {{ ansible_domain |upper }} --principal {{ ipaadmin_principal }} --password {{ ipaadmin_password }}
+    responses: 
+      "Continue to configure the system with these values? [no]:": yes
