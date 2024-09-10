@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - theforeman.freeipa_client
+    - theforeman_custom.freeipa_client_add
