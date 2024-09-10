@@ -1,7 +1,7 @@
 ---
 - name: Install required packages
   ansible.builtin.package:
-    name: 
+    name:
       - ipa-client
       - python3-pip
     state: installed
@@ -11,8 +11,8 @@
     state: present
 - name: Add host to IPA server
   ansible.builtin.expect:
-    command: ipa-client-install --mkhomedir --no-ntp --no-nisdomain --hostname {{ inventory_hostname }} --realm {{ ansible_domain |upper }} --principal {{ ipaadmin_principal }} --password {{ ipaadmin_password }}
-    responses: 
+    command: ipa-client-install --mkhomedir --no-ntp --no-nisdomain --hostname {{ inventory_hostname }} --realm {{ ansible_domain |upper }} --principal {{ theforeman_custom.aide_for_audit_tools_ipaadmin_principal }} --password {{ theforeman_custom.aide_for_audit_tools_ipaadmin_password }}
+    responses:
       'Continue to configure the system with these values': 'yes'
   register: result
   changed_when:
