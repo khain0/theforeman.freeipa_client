@@ -11,7 +11,7 @@
     state: present
 - name: Add host to IPA server
   ansible.builtin.expect:
-    command: ipa-client-install --mkhomedir --no-ntp --no-nisdomain --hostname {{ inventory_hostname }} --realm {{ ansible_domain |upper }} --principal {{ theforeman_custom.aide_for_audit_tools_ipaadmin_principal }} --password {{ theforeman_custom.aide_for_audit_tools_ipaadmin_password }}
+    command: ipa-client-install --mkhomedir --no-ntp --no-nisdomain --hostname {{ inventory_hostname }} --realm {{ ansible_domain |upper }} --principal {{ theforeman_custom_aide_for_audit_tools_ipaadmin_principal }} --password {{ theforeman_custom_aide_for_audit_tools_ipaadmin_password }}
     responses:
       'Continue to configure the system with these values': 'yes'
   register: result
