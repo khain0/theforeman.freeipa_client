@@ -1,2 +1,3 @@
 ---
-# defaults file for theforeman.freeipa_client
+theforeman_custom_aide_for_audit_tools_ipaadmin_principal: ""
+theforeman_custom_aide_for_audit_tools_ipaadmin_password: ""
