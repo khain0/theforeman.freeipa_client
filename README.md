@@ -11,8 +11,8 @@ None
 Role Variables
 --------------
 
-ipaadmin_principal - principal name who is eligible to enroll new client servers on IPA
-ipaadmin_password - principal password
+theforeman_custom_aide_for_audit_tools_ipaadmin_principal - principal name who is eligible to enroll new client servers on IPA
+theforeman_custom_aide_for_audit_tools_ipaadmin_password - principal password
 
 Dependencies
 ------------
